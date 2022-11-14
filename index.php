@@ -57,6 +57,10 @@
 		case "localhost":
 		define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 		break;
+
+		case "pengajuan.herokuapp.com":
+		define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'testing');
+		break;
 		
 		case "glory-izin-keperluan.000webhostapp.com":
 		define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');

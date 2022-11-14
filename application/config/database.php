@@ -78,11 +78,19 @@ if (ENVIRONMENT == 'production') {
 	$dbconn['user'] 		= 'id19830971_root';
 	$dbconn['pass'] 		= 'Bismilahiso7@~';
 	$dbconn['db_name'] 		= 'id19830971_master_glory';
-} else {
+} else if (ENVIRONMENT == 'development') {
 	$dbconn['localhost'] 	= 'localhost';
 	$dbconn['user'] 		= 'root';
 	$dbconn['pass'] 		= '';
 	$dbconn['db_name'] 		= 'master_glory';
+
+} else {
+	$url = getenv('JAWSDB_MARIA_URL');
+	$dbparts = parse_url($url);
+	$dbconn['localhost'] 	= $dbparts['host'];
+	$dbconn['user'] 		= $dbparts['user'];
+	$dbconn['pass'] 		= $dbparts['pass'];
+	$dbconn['db_name'] 		= ltrim($dbparts['path'],'/');
 }
 
 $db['default'] = array(
