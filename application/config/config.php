@@ -25,8 +25,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if (ENVIRONMENT == 'production') {
 	$config['base_url'] = 'https://glory-izin-keperluan.000webhostapp.com/';
-} else {
+} else if (ENVIRONMENT == 'development') {
 	$config['base_url'] = 'http://localhost/master_glory/';
+} else {
+	$config['base_url'] = 'https://pengajuan.herokuapp.com/';
+
 }
 
 /*
