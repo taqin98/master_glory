@@ -63,7 +63,7 @@
 
 				<div class="col-sm-6">
 					<label for="tanggalPengajuan" class="form-label">Tanggal</label>
-					<input type="date" class="form-control" id="tanggalPengajuan" placeholder="" value="" required>
+					<input type="date" class="form-control" id="tanggalPengajuan" placeholder="" value="<?php echo date('Y-m-d'); ?>" required>
 					<div class="invalid-feedback">
 						Tanggal Wajib di isi.
 					</div>

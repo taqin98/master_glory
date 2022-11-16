@@ -135,6 +135,7 @@ class Main extends CI_Controller {
 		$pdf->AddPage();
 		$pdf->SetFont('Arial','B',16);
 		$pdf->Cell(40,10,'Hello World!');
+		$pdf->Image(base_url('assets/img/favicons/android-chrome-192x192.png'),20,10,50,0, 'PNG');
 		$pdf->Output();
 
 	}
