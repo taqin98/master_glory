@@ -129,14 +129,96 @@ class Main extends CI_Controller {
 		}
 	}
 
+	function looping_char($num=0, $char='')
+	{
+		$characters = '';
+		for ($i=0; $i < $num; $i++) { 
+			$characters .= $char;
+		}
+		return $characters;
+
+	}
+
 	public function print()
 	{
-		$pdf = new FPDF();
-		$pdf->AddPage();
-		$pdf->SetFont('Arial','B',16);
-		$pdf->Cell(40,10,'Hello World!');
-		$pdf->Image(base_url('assets/img/favicons/android-chrome-192x192.png'),20,10,50,0, 'PNG');
-		$pdf->Output();
+		$Pdf = new FPDF('p','mm','A5');
+		$Pdf->AddPage();
+		$Pdf->SetFont('Arial','',10);
+        $Pdf->SetTextColor(0,0,0);
+
+        $Pdf->SetTextColor(0,0,0);
+        $Pdf->SetFont('Arial','',16);
+        // mencetak string
+        $SetX = $SetY = $ColWidth = $ColHeight = 10;
+        $Pdf->SetX($SetX);
+        $Pdf->SetFont('Arial','B',18);
+        $Pdf->Cell(0,10,'MEMO INTERN',0,1,'C');
+        $Pdf->SetFont('Arial','B',14);
+        $Pdf->Cell(0,7,'MEMO INTERN',0,1,'C');
+        $Pdf->SetRightMargin(10);
+        $Pdf->SetXY($SetX,$SetY + 10);
+        $Pdf->SetLineWidth(1);
+        $Pdf->Cell(0,10,' ','B',1,'R');
+
+        $Pdf->SetXY($SetX,$SetY + 25);
+        $Pdf->SetFont('Arial','',11);
+        $Pdf->Cell(0,10,'Diberikan kepada',0,1,'L');
+        
+        $Pdf->SetX($SetX + 20);
+        $Pdf->Cell($ColWidth + 10,$ColHeight,'Nama',0,0,'L');
+        $Pdf->Cell(0,$ColHeight,' : '.$this->looping_char(50,'.'),0,1,'L');
+
+        $Pdf->SetX($SetX + 20);
+        $Pdf->Cell($ColWidth + 10,$ColHeight,'NIK',0,0,'L');
+        $Pdf->Cell(0,$ColHeight,' : '.$this->looping_char(50,'.'),0,1,'L');
+
+
+        $Pdf->SetX($SetX + 20);
+        $Pdf->Cell($ColWidth + 10,$ColHeight,'Bagian',0,0,'L');
+        $Pdf->Cell(0,$ColHeight,' : '.$this->looping_char(50,'.'),0,1,'L');
+
+        $Pdf->SetX($SetX + 20);
+        $Pdf->Cell($ColWidth + 10,$ColHeight,'Keperluan',0,0,'L');
+        $Pdf->SetX($SetX + $ColWidth + 30);
+        $Pdf->Cell($ColWidth, $ColHeight, ' :   '.chr(127), 0, 0, 'L');
+        $Pdf->Cell($ColWidth*4, $ColHeight,'Sakit',0,0,'L');
+        $Pdf->SetX( $Pdf->GetX() );
+        $Pdf->Cell(0,$ColHeight,'('.$this->looping_char(30,'.').')',0,1,'L');
+
+        $Pdf->SetX($SetX + $ColWidth + 35.5);
+        $Pdf->Cell($ColWidth/2, $ColHeight, chr(127), 0, 0, 'L');
+        $Pdf->Cell($ColWidth*4,$ColHeight,'Urusan keluarga',0,0,'L');
+        $Pdf->SetX( $Pdf->GetX() );
+        $Pdf->Cell(0,$ColHeight,'('.$this->looping_char(30,'.').')',0,1,'L');
+
+        $Pdf->SetX($SetX + $ColWidth + 35.5);
+        $Pdf->Cell($ColWidth/2, $ColHeight, chr(127), 0, 0, 'L');
+        $Pdf->Cell($ColWidth*4,$ColHeight,'Lain-lain',0,0,'L');
+        $Pdf->SetX( $Pdf->GetX() );
+        $Pdf->Cell(0,$ColHeight,'('.$this->looping_char(30,'.').')',0,1,'L');
+
+        $Pdf->SetX( $Pdf->GetX() + 45 );
+        $Pdf->Cell(0,$ColHeight, $this->looping_char(75,'.') ,0,1,'L');
+        $Pdf->SetX( $Pdf->GetX() + 45 );
+        $Pdf->Cell(0,$ColHeight, $this->looping_char(75,'.') ,0,1,'L');
+        $Pdf->Cell($ColWidth*2,$ColHeight, 'Semarang, ' ,0,0,'L');
+        $Pdf->Cell(0,$ColHeight, $this->looping_char(22,'.') ,0,1,'L');
+        $Pdf->Cell($ColWidth*2,$ColHeight, 'Tanda tangan Ybs, ' ,0,1,'L');
+        $Pdf->Cell($ColWidth*3.5,$ColHeight*2, '('.$this->looping_char(25,' ').')' ,0,1,'C');
+        $Pdf->Cell($ColWidth*3.5,$ColHeight, 'Dept. Personalia' ,0,1,'C');
+
+
+        $Pdf->SetXY( $Pdf->GetX() + 50, $Pdf->GetY() - 30 );
+        $Pdf->Cell($ColWidth*3.5,$ColHeight*2, '('.$this->looping_char(25,' ').')' ,0,1,'C');
+        $Pdf->SetX( $Pdf->GetX() + 50);
+        $Pdf->Cell($ColWidth*3.5,$ColHeight, 'Dept. Personalia' ,0,1,'C');
+
+        $Pdf->SetXY( $Pdf->GetX() + 95, $Pdf->GetY() - 30 );
+        $Pdf->Cell($ColWidth*3.5,$ColHeight*2, '('.$this->looping_char(25,' ').')' ,0,1,'C');
+        $Pdf->SetX( $Pdf->GetX() + 95);
+        $Pdf->Cell($ColWidth*3.5,$ColHeight, 'Dept. Personalia' ,0,1,'C');
+
+		$Pdf->Output();
 
 	}
 
